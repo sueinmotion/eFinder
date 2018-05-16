@@ -10,21 +10,15 @@ namespace App3.Services
 {
     public class MockDataStore : IDataStore<Employee>
     {
-        List<Employee> employees;
+        static List<Employee> employees = new List<Employee>
+        {
+            new Employee { Id = Guid.NewGuid().ToString(), Name = "Sue Su", Location="1625N" },
+            new Employee { Id = Guid.NewGuid().ToString(), Name = "Richard Alvarez", Location="1625M" },
+        };
 
         public MockDataStore()
         {
-            employees = new List<Employee>();
-            var mockItems = new List<Employee>
-            {
-                new Employee { Id = Guid.NewGuid().ToString(), Name = "Sue Su", Location="1625N" },
-                new Employee { Id = Guid.NewGuid().ToString(), Name = "Richard Alvarez", Location="1625M" },
-            };
 
-            foreach (var employee in mockItems)
-            {
-                employees.Add(employee);
-            }
         }
 
         public async Task<bool> AddItemAsync(Employee employee)
